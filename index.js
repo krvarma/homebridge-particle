@@ -145,9 +145,9 @@ ParticleAccessory.prototype.setState = function(state, callback) {
 
 	var onUrl = this.url + this.deviceId + "/" + this.functionName;
 
-	this.log.info("Calling function: " + onUrl);
+	var argument = this.args.replace("{STATE}", (state ? "1" : "0"));
 
-	var argument = this.args.replace("{STATE", (state ? "1" : "0"));
+	this.log.info("Calling function: " + onUrl + "?" + argument);
 
 	request.post(
 		onUrl, {
@@ -157,7 +157,7 @@ ParticleAccessory.prototype.setState = function(state, callback) {
 			}
 		},
 		function(error, response, body) {
-			console.log(response);
+			//console.log(response);
 
 			if (!error) {
 				callback();
