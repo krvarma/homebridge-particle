@@ -211,6 +211,7 @@ ParticleAccessory.prototype.processEventData = function(e){
 			this.services[1]
 				.getCharacteristic(Characteristic.On)
 				.setValue(parseFloat(tokens[1]));
+		}
 		else if (tokens[0].toLowerCase() === "motion") {
 			this.value = parseFloat(tokens[1]);
 			this.log('Received ' + this.value);
