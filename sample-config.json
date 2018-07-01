@@ -1,7 +1,7 @@
 {
     "bridge": {
         "name": "Homebridge",
-        "username": "CC:22:3D:E3:CE:39",
+        "username": "<<MAC ADDRESS>>",
         "port": 51826,
         "pin": "031-45-154"
     },
@@ -24,21 +24,40 @@
 					"args": "0={STATE}"
 				},
 				{
-					"accessory": "ParticleLight",
-					"name": "Kitchen Light",
-					"deviceid": "<<device id>>",
-					"type": "LIGHT",
-					"function_name": "onoff",
-					"args": "1={STATE}"
-				},
-				{
 					"accessory": "ParticleTemperature",
 					"name": "Kitchen Temperature",
 					"deviceid": "<<device id>>",
 					"type": "SENSOR",
 					"sensorType": "temperature",
 					"key": "temperature",
-					"event_name": "tvalue"
+					"event_name": "HKSValues"
+				},
+				{
+					"accessory": "Motion Sensor",
+					"name": "Motion",
+					"deviceid": "<<device id>>",
+					"type": "SENSOR",
+					"sensorType": "motion",
+					"key": "motion",
+					"event_name": "HKSValues"
+				},
+				{
+					"accessory": “Humidity Sensor”,
+					"name": “Humidity",
+					"deviceid": "<<device id>>",
+					"type": “SENSOR”,
+					"sensorType": “humidity”,
+					"key": "humidity",
+					"event_name": “HKSValues"
+				},
+				{
+					"accessory": “Light Sensor”,
+					"name": “Light",
+					"deviceid": "<<device id>>",
+					"type": “SENSOR”,
+					"sensorType": “light”,
+					"key": "light",
+					"event_name": “HKSValues"
 				}
 			]
         }
