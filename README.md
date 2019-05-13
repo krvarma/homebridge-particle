@@ -62,6 +62,15 @@ In this version, I have made some changes from the older version. Mainly the plu
                         "key": "motion",
                         "event_name": "HKSValues"
                     },
+                    {
+                        "accessory": "Contact Sensor",
+                        "name": "Contact",
+                        "deviceid": "<<device id>>",
+                        "type": "SENSOR",
+                        "sensorType": "contact",
+                        "key": "contact",
+                        "event_name": "HKSValues"
+                    }
     			]
             }
         ]
