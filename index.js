@@ -114,6 +114,15 @@ function ParticleAccessory(log, url, access_token, device) {
 				.getCharacteristic(Characteristic.CurrentAmbientLightLevel)
 				.on('get', this.getDefaultValue.bind(this));
 		}
+		else if(this.sensorType.toLowerCase() === "motion"){
+			console.log("Motion Sensor");
+
+			service = new Service.MotionSensor(this.name);
+
+			service
+				.getCharacteristic(Characteristic.MotionDetected)
+				.on('get', this.getDefaultValue.bind(this));
+		}
 
 		if(service != undefined){
 			console.log("Initializing " + service.displayName + ", " + this.sensorType);
@@ -133,7 +142,7 @@ function ParticleAccessory(log, url, access_token, device) {
 			this.services.push(service);
 		}
 
-		console.log("Servie Count: " + this.services.length);
+		console.log("Service Count: " + this.services.length);
 	}
 }
 
@@ -204,6 +213,19 @@ ParticleAccessory.prototype.processEventData = function(e){
 				.getCharacteristic(Characteristic.On)
 				.setValue(parseFloat(tokens[1]));
 		}
+		else if (tokens[0].toLowerCase() === "motion") {
+			this.value = parseFloat(tokens[1]);
+			this.log('Received ' + this.value);
+			if (this.value === '1.00' || this.value === 1.00 || this.value === 'true' || this.value === 'TRUE') this.value = true;
+        else if (this.value === '0.00' || this.value === 0.00 || this.value === 'false' || this.value === 'FALSE') this.value = false;
+			if (this.value !== true && this.value !== false) {
+        this.log('Received value is not valid.');
+     	} else {
+      	this.services[1]
+        .getCharacteristic(Characteristic.MotionDetected)
+				.setValue(this.value);
+			}
+    }
 	}
 }
 

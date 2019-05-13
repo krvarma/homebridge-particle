@@ -51,8 +51,17 @@ In this version, I have made some changes from the older version. Mainly the plu
     					"type": "SENSOR",
     					"sensorType": "temperature",
     					"key": "temperature",
-    					"event_name": "tvalue"
-    				}
+    					"event_name": "HKSValues"
+    				},
+                    {
+                        "accessory": "Motion Sensor",
+                        "name": "Motion",
+                        "deviceid": "<<device id>>",
+                        "type": "SENSOR",
+                        "sensorType": "motion",
+                        "key": "motion",
+                        "event_name": "HKSValues"
+                    },
     			]
             }
         ]
