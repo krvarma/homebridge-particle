@@ -94,6 +94,10 @@ function ParticleAccessory(log, url, access_token, device) {
 
 			service
 				.getCharacteristic(Characteristic.CurrentTemperature)
+        .setProps({
+          minValue: -256,
+          maxValue: -512
+        })
 				.on('get', this.getDefaultValue.bind(this));
 		}
 		else if(this.sensorType.toLowerCase() === "humidity"){
