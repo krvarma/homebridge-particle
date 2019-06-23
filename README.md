@@ -28,50 +28,68 @@ In this version, I have made some changes from the older version. Mainly the plu
     			"access_token": "<<access token>>",
     			"cloudurl": "https://api.spark.io/v1/devices/",
     			"devices": [
-				{
-					"accessory": "ParticleLight",
-					"name": "Bedroom Light",
-				    "deviceid": "<<device id>>",
-					"type": "LIGHT",
-					"function_name": "onoff",
-					"args": "0={STATE}"
-				},
-				{
-					"accessory": "ParticleTemperature",
-					"name": "Kitchen Temperature",
-					"deviceid": "<<device id>>",
-					"type": "SENSOR",
-					"sensorType": "temperature",
-					"key": "temperature",
-					"event_name": "HKSValues"
-				},
-				{
-					"accessory": "Motion Sensor",
-					"name": "Motion",
-					"deviceid": "<<device id>>",
-					"type": "SENSOR",
-					"sensorType": "motion",
-					"key": "motion",
-					"event_name": "HKSValues"
-				},
-				{
-					"accessory": “Humidity Sensor”,
-					"name": “Humidity",
-					"deviceid": "<<device id>>",
-					"type": “SENSOR”,
-					"sensorType": “humidity”,
-					"key": "humidity",
-					"event_name": “HKSValues"
-				},
-				{
-					"accessory": “Light Sensor”,
-					"name": “Light",
-					"deviceid": "<<device id>>",
-					"type": “SENSOR”,
-					"sensorType": “light”,
-					"key": "light",
-					"event_name": “HKSValues"
-				}
+				    {
+					    "accessory": "ParticleLight",
+					    "name": "Bedroom Light",
+				        "deviceid": "<<device id>>",
+					    "type": "LIGHT",
+					    "function_name": "onoff",
+					    "args": "0={STATE}"
+				    },
+				    {
+					    "accessory": "ParticleTemperature",
+					    "name": "Kitchen Temperature",
+					    "deviceid": "<<device id>>",
+					    "type": "SENSOR",
+					    "sensorType": "temperature",
+					    "key": "temperature",
+					    "event_name": "HKSValues"
+				    },
+				    {
+					    "accessory": "Motion Sensor",
+					    "name": "Motion",
+					    "deviceid": "<<device id>>",
+					    "type": "SENSOR",
+					    "sensorType": "motion",
+					    "key": "motion",
+					    "event_name": "HKSValues"
+				    },
+				    {
+					    "accessory": “Humidity Sensor”,
+					    "name": “Humidity",
+					    "deviceid": "<<device id>>",
+					    "type": “SENSOR”,
+					    "sensorType": “humidity”,
+					    "key": "humidity",
+					    "event_name": “HKSValues"
+				    },
+				    {
+					    "accessory": “Light Sensor”,
+					    "name": “Light",
+					    "deviceid": "<<device id>>",
+					    "type": “SENSOR”,
+					    "sensorType": “light”,
+					    "key": "light",
+					    "event_name": “HKSValues"
+				    },
+            {
+              "accessory": "Motion Sensor",
+              "name": "Motion",
+              "deviceid": "<<device id>>",
+              "type": "SENSOR",
+              "sensorType": "motion",
+              "key": "motion",
+              "event_name": "HKSValues"
+            },
+            {
+              "accessory": "Contact Sensor",
+              "name": "Contact",
+              "deviceid": "<<device id>>",
+              "type": "SENSOR",
+              "sensorType": "contact",
+              "key": "contact",
+              "event_name": "HKSValues"
+            }
     			]
             }
         ]
