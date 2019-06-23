@@ -246,11 +246,12 @@ ParticleAccessory.prototype.processEventData = function(e){
         .getCharacteristic(Characteristic.MotionDetected)
 				.setValue(this.value);
       }
-			else if (tokens[0].toLowerCase() === "contact") {
+		}
+		else if (tokens[0].toLowerCase() === "contact") {
 			this.value = parseFloat(tokens[1]);
 			this.log('Received ' + this.value);
 			if (this.value === '1.00' || this.value === 1.00 || this.value === 'true' || this.value === 'TRUE') this.value = true;
-        else if (this.value === '0.00' || this.value === 0.00 || this.value === 'false' || this.value === 'FALSE') this.value = false;
+      else if (this.value === '0.00' || this.value === 0.00 || this.value === 'false' || this.value === 'FALSE') this.value = false;
 			if (this.value !== true && this.value !== false) {
         this.log('Received value is not valid.');
      	} else {
@@ -259,8 +260,7 @@ ParticleAccessory.prototype.processEventData = function(e){
 				.setValue(this.value);
 			}
     }
-    }
-	}
+  }
 }
 
 ParticleAccessory.prototype.getDefaultValue = function(callback) {
