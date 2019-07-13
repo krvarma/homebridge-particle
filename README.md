@@ -72,25 +72,25 @@ In this version, I have made some changes from the older version. Mainly the plu
 					    "key": "light",
 					    "event_name": “HKSValues"
 				    },
-            {
-              "accessory": "Motion Sensor",
-              "name": "Motion",
-              "deviceid": "<<device id>>",
-              "type": "SENSOR",
-              "sensorType": "motion",
-              "key": "motion",
-              "event_name": "HKSValues"
-            },
-            {
-              "accessory": "Contact Sensor",
-              "name": "Contact",
-              "deviceid": "<<device id>>",
-              "type": "SENSOR",
-              "sensorType": "contact",
-              "key": "contact",
-              "event_name": "HKSValues"
-            }
-    			]
+				    {
+				            "accessory": "Motion Sensor",
+				            "name": "Motion",
+				            "deviceid": "<<device id>>",
+				            "type": "SENSOR",
+				            "sensorType": "motion",
+				            "key": "motion",
+				            "event_name": "HKSValues"
+			            },
+			            {
+				            "accessory": "Contact Sensor",
+				            "name": "Contact",
+				            "deviceid": "<<device id>>",
+				            "type": "SENSOR",
+				            "sensorType": "contact",
+				            "key": "contact",
+				            "event_name": "HKSValues"
+				    }
+    				   ]
             }
         ]
     }
