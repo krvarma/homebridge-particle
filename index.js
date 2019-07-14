@@ -1,3 +1,4 @@
+var debug = require('debug')('homebridge-particle');
 var request = require("request");
 var eventSource = require('eventsource');
 var Service, Characteristic;
@@ -51,7 +52,7 @@ function ParticleAccessory(log, url, access_token, device) {
 	this.url = url;
 	this.value = 20;
 
-	console.log(this.name + " = " + this.sensorType);
+	debug(this.name + " = " + this.sensorType);
 
 	this.services = [];
 
@@ -152,7 +153,7 @@ function ParticleAccessory(log, url, access_token, device) {
 			var eventUrl = this.url + this.deviceId + "/events/" + this.eventName + "?access_token=" + this.accessToken;
 			var es = new eventSource(eventUrl);
 
-			console.log(eventUrl);
+			debug(eventUrl);
 
 			es.onerror = function() {
 				console.log('ERROR!');
@@ -168,16 +169,16 @@ function ParticleAccessory(log, url, access_token, device) {
 }
 
 ParticleAccessory.prototype.setState = function(state, callback) {
-	this.log.info("Getting current state...");
+	debug("Getting current state...");
 
-	this.log.info("URL: " + this.url);
-	this.log.info("Device ID: " + this.deviceId);
+	debug("URL: " + this.url);
+	debug("Device ID: " + this.deviceId);
 
 	var onUrl = this.url + this.deviceId + "/" + this.functionName;
 
 	var argument = this.args.replace("{STATE}", (state ? "1" : "0"));
 
-	this.log.info("Calling function: " + onUrl + "?" + argument);
+	debug("Calling function: " + onUrl + "?" + argument);
 
 	request.post(
 		onUrl, {
@@ -202,8 +203,8 @@ ParticleAccessory.prototype.processEventData = function(e){
 	var data = JSON.parse(e.data);
 	var tokens = data.data.split('=');
 
-	console.log(tokens[0] + " = " + tokens[1] + ", " + this.services[1].displayName + ", " + this.sensorType + ", " + this.key.toLowerCase() + ", " + tokens[0].toLowerCase());
-	console.log(this.services[1] != undefined && this.key.toLowerCase() === tokens[0].toLowerCase());
+	debug(tokens[0] + " = " + tokens[1] + ", " + this.services[1].displayName + ", " + this.sensorType + ", " + this.key.toLowerCase() + ", " + tokens[0].toLowerCase());
+	debug(this.services[1] != undefined && this.key.toLowerCase() === tokens[0].toLowerCase());
 
 	if(this.services[1] != undefined && this.key.toLowerCase() === tokens[0].toLowerCase()){
 		if (tokens[0].toLowerCase() === "temperature") {
@@ -236,11 +237,11 @@ ParticleAccessory.prototype.processEventData = function(e){
 		}
 		else if (tokens[0].toLowerCase() === "motion") {
 			this.value = parseFloat(tokens[1]);
-			this.log('Received ' + this.value);
+			debug('Received ' + this.value);
 			if (this.value === '1.00' || this.value === 1.00 || this.value === 'true' || this.value === 'TRUE') this.value = true;
       else if (this.value === '0.00' || this.value === 0.00 || this.value === 'false' || this.value === 'FALSE') this.value = false;
 			if (this.value !== true && this.value !== false) {
-        this.log('Received value is not valid.');
+        debug('Received value is not valid.');
      	} else {
       	this.services[1]
         .getCharacteristic(Characteristic.MotionDetected)
@@ -249,11 +250,11 @@ ParticleAccessory.prototype.processEventData = function(e){
 		}
 		else if (tokens[0].toLowerCase() === "contact") {
 			this.value = parseFloat(tokens[1]);
-			this.log('Received ' + this.value);
+			debug('Received ' + this.value);
 			if (this.value === '1.00' || this.value === 1.00 || this.value === 'true' || this.value === 'TRUE') this.value = true;
       else if (this.value === '0.00' || this.value === 0.00 || this.value === 'false' || this.value === 'FALSE') this.value = false;
 			if (this.value !== true && this.value !== false) {
-        this.log('Received value is not valid.');
+        debug('Received value is not valid.');
      	} else {
       	this.services[1]
         .getCharacteristic(Characteristic.ContactDetected)
@@ -268,7 +269,7 @@ ParticleAccessory.prototype.getDefaultValue = function(callback) {
 }
 
 ParticleAccessory.prototype.setCurrentValue = function(value, callback) {
-	console.log("Value: " + value);
+	debug("Value: " + value);
 
 	callback(null, value);
 }
