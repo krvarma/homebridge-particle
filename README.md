@@ -28,45 +28,82 @@ In this version, I have made some changes from the older version. Mainly the plu
     			"access_token": "<<access token>>",
     			"cloudurl": "https://api.spark.io/v1/devices/",
     			"devices": [
-    				{
-    					"accessory": "BedroomLight",
-    					"name": "Bedroom Light",
-    				    "deviceid": "<<device id>>",
-    					"type": "LIGHT",
-    					"function_name": "onoff",
-    					"args": "0={STATE}"
-    				},
-    				{
-    					"accessory": "KitchenLight",
-    					"name": "Kitchen Light",
-    					"deviceid": "<<device id>>",
-    					"type": "LIGHT",
-    					"function_name": "onoff",
-    					"args": "1={STATE}"
-    				},
-    				{
-    					"accessory": "KitchenTemperature",
-    					"name": "Kitchen Temperature",
-    					"deviceid": "<<device id>>",
-    					"type": "SENSOR",
-    					"sensorType": "temperature",
-    					"key": "temperature",
-    					"event_name": "tvalue"
-    				}
-    			]
+				    {
+					    "accessory": "ParticleLight",
+					    "name": "Bedroom Light",
+				        "deviceid": "<<device id>>",
+					    "type": "LIGHT",
+					    "function_name": "onoff",
+					    "args": "0={STATE}"
+				    },
+				    {
+					    "accessory": "ParticleTemperature",
+					    "name": "Kitchen Temperature",
+					    "deviceid": "<<device id>>",
+					    "type": "SENSOR",
+					    "sensorType": "temperature",
+					    "key": "temperature",
+					    "event_name": "HKSValues"
+				    },
+				    {
+					    "accessory": "Motion Sensor",
+					    "name": "Motion",
+					    "deviceid": "<<device id>>",
+					    "type": "SENSOR",
+					    "sensorType": "motion",
+					    "key": "motion",
+					    "event_name": "HKSValues"
+				    },
+				    {
+					    "accessory": “Humidity Sensor”,
+					    "name": “Humidity",
+					    "deviceid": "<<device id>>",
+					    "type": “SENSOR”,
+					    "sensorType": “humidity”,
+					    "key": "humidity",
+					    "event_name": “HKSValues"
+				    },
+				    {
+					    "accessory": “Light Sensor”,
+					    "name": “Light",
+					    "deviceid": "<<device id>>",
+					    "type": “SENSOR”,
+					    "sensorType": “light”,
+					    "key": "light",
+					    "event_name": “HKSValues"
+				    },
+				    {
+				            "accessory": "Motion Sensor",
+				            "name": "Motion",
+				            "deviceid": "<<device id>>",
+				            "type": "SENSOR",
+				            "sensorType": "motion",
+				            "key": "motion",
+				            "event_name": "HKSValues"
+			            },
+			            {
+				            "accessory": "Contact Sensor",
+				            "name": "Contact",
+				            "deviceid": "<<device id>>",
+				            "type": "SENSOR",
+				            "sensorType": "contact",
+				            "key": "contact",
+				            "event_name": "HKSValues"
+				    }
+    			   ]
             }
         ]
     }
 
-As you can see from the above example this `config.json` file defines 3 accessories. 2 Lights and one Temperature Sensor. The **access_token** defines the Particle Access Token and **cloudurl** defines the base Particle API url. If you are using the Particle Cloud, then the value of *cloudurl* should be https://api.spark.io/v1/devices/. If you are using local cloud, then replace with your sensor address. 
+As you can see from the above example this `config.json` file defines 5 accessories. A Light, and 4 sensors: temperature, humidity, light, and motion. The **access_token** defines the Particle Access Token and **cloudurl** defines the base Particle API url. If you are using the Particle Cloud, then the value of *cloudurl* should be https://api.spark.io/v1/devices/. If you are using local cloud, then replace with your sensor address. 
 
 The `devices` array contains all the accessories. You can see the accessory object defines following string objects:
 
  - ***accessory*** - Accessory name, this is the name of the accessory.
  - ***name*** - Display name, this is the name to be displayed on the HomeKit app.
  - ***deviceid*** - Device ID of the Particle Device (Core, Photon or Electron). It is defined in accessory so that you can use different Particle Devices for different accessory.
- - ***type*** - Type of the accessoy. As of now, the plugin supports 2 type, LIGHT and SENSOR. Type LIGHT represents a light, such as bedroom light, kitchen light, living room light, etc... Type SENSOR represents sensor accessory such as Temperature sensor, Humidity sensor, Light sensor, etc...
- - ***sensorType*** - Optional Sensor Type, this string object is optional. This is only valid when the accessory type is SENSOR. As of now the plugin supports 3 types of sensors, Temperature Sensor, Humidity Sensor and Light Sensor. More sensor will be supports in future versions.
- - ***event_name*** - The name of the event to listen for sensor value update. This is only valid if the accessory type is SENSOR. If the accessory is a type of SENSOR, then the plugin listens for events published from Particle  Device (using `Particle.publish`). The device firmware should publish the sensor values in the format `key=value`. The key identifies the sensor value. For a temperature sensor the key should be ***temperature***. For a humidity sensor the key should be ***humidity***. For light sensor it should be ***light***.
+ - ***type*** - Type of the accessoy. As of now, the plugin supports 2 type, LIGHT and SENSOR. Type LIGHT represents a light, such as bedroom light, kitchen light, living room light, etc... Type SENSOR represents sensor accessory such as Temperature sensor, Humidity sensor, Light sensor, Motion Sensor, etc...
+ - ***sensorType*** - Optional Sensor Type, this string object is optional. This is only valid when the accessory type is SENSOR. As of now the plugin supports 4 types of sensors, Temperature Sensor, Humidity Sensor, Motion Sensor, and Light Sensor. More sensor will be supports in future versions.
+ - ***event_name*** - The name of the event to listen for sensor value update. This is only valid if the accessory type is SENSOR. If the accessory is a type of SENSOR, then the plugin listens for events published from Particle  Device (using `Particle.publish`). The device firmware should publish the sensor values in the format `key=value`. The key identifies the sensor value. For a temperature sensor the key should be ***temperature***. For a humidity sensor the key should be ***humidity***. For light sensor it should be ***light***. For motion sensor it should be ***motion***.
  - ***key*** - Name of the key, this is not used in this version of the plugin. This is included for future purpose.
 

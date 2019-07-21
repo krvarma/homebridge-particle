@@ -1,6 +1,6 @@
 {
   "name": "homebridge-particle",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Particle plugin for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
   "repository": {
@@ -15,6 +15,7 @@
     "homebridge": ">=0.2.0"
   },
   "dependencies": {
+    "debug": "^2.5.1",
     "request": "^2.65.0",
     "eventsource": ""
   }
